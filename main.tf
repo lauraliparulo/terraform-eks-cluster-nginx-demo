@@ -1,5 +1,6 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
+# Modified by Laura Liparulo, 13.01.2025
 
 provider "aws" {
   region = var.region
@@ -15,7 +16,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "education-eks-${random_string.suffix.result}"
+  cluster_name = "demo-eks-${random_string.suffix.result}"
 }
 
 resource "random_string" "suffix" {
@@ -27,7 +28,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
 
-  name = "education-vpc"
+  name = "demo-vpc"
 
   cidr = "10.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
