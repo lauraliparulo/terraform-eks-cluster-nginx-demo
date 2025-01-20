@@ -7,8 +7,6 @@ It includes a script called "run_all.sh", which allows you to set a full Nginx d
 The Terraform apply command takes quite long to complete (At least 10 Minutes).
 
 
-
-
 ## Policies 
 
 Make sure you attach the policy  AWSKeyManagementServicePowerUser and AmazonEKSClusterPolicy to the current IAM user!
