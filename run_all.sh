@@ -12,6 +12,6 @@ REGION=$(echo "${REGION_OUT}" | tr --delete \")
 #eksctl version
 
 aws eks --region $REGION update-kubeconfig --name $CLUSTER_ID
-skubectl apply -f k8s/nginx_namespace.yaml -f k8s/nginx_deployment.yaml -f k8s/nginx_service.yaml
+kubectl apply -f k8s/nginx_namespace.yaml -f k8s/nginx_deployment.yaml -f k8s/nginx_service.yaml
 sleep 1
 kubectl get service nginx-service --namespace nginx-ns --output='jsonpath={.status.loadBalancer.ingress[0].hostname}' && open http://$(kubectl get service nginx-service --namespace nginx-ns --output='jsonpath={.status.loadBalancer.ingress[0].hostname}')
